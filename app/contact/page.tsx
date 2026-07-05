@@ -14,6 +14,7 @@ import {
   ShieldCheck,
   Sparkles
 } from "lucide-react";
+import { LocalizedText } from "@/components/LocalizedText";
 import { SiteChrome } from "@/components/SiteChrome";
 
 export const metadata: Metadata = {
@@ -90,12 +91,12 @@ export default function ContactPage() {
       <section className="contact-hero">
         <div className="container contact-hero-grid">
           <div className="contact-hero-copy">
-            <p className="contact-kicker">Public collaboration entry</p>
-            <h1>Start with a focused note.</h1>
-            <p>
-              Contact is the public front door for research questions, AI systems, creative workflows, and Personal OS
-              collaboration. Share the context that is safe to make public; keep private operations out of the inbox.
-            </p>
+            <LocalizedText as="p" className="contact-kicker" value="Public collaboration entry" />
+            <LocalizedText as="h1" value="Start with a focused note." />
+            <LocalizedText
+              as="p"
+              value="Contact is the public front door for research questions, AI systems, creative workflows, and Personal OS collaboration. Share the context that is safe to make public; keep private operations out of the inbox."
+            />
             <div className="contact-hero-actions">
               <a href="mailto:hello@weiyudang.com" className="link-focus contact-primary-action">
                 <Mail size={17} aria-hidden />
@@ -104,22 +105,22 @@ export default function ContactPage() {
               </a>
               <Link href="/dora" className="link-focus contact-secondary-action">
                 <MessageCircle size={17} aria-hidden />
-                Meet Doraemon first
+                <LocalizedText value="Meet Doraemon first" />
                 <ArrowRight size={16} aria-hidden />
               </Link>
             </div>
             <div className="contact-status-row" aria-label="Contact safety boundary">
               <span>
                 <ShieldCheck size={15} aria-hidden />
-                Public-safe first
+                <LocalizedText value="Public-safe first" />
               </span>
               <span>
                 <LockKeyhole size={15} aria-hidden />
-                No owner operations
+                <LocalizedText value="No owner operations" />
               </span>
               <span>
                 <FileText size={15} aria-hidden />
-                Specific context helps
+                <LocalizedText value="Specific context helps" />
               </span>
             </div>
           </div>
@@ -136,15 +137,15 @@ export default function ContactPage() {
                 className="contact-image"
               />
               <div className="contact-image-card">
-                <span>Contact route</span>
-                <strong>Public note first. Private systems stay private.</strong>
-                <small>Good context beats a long pitch.</small>
+                <LocalizedText value="Contact route" />
+                <LocalizedText as="strong" value="Public note first. Private systems stay private." />
+                <LocalizedText as="small" value="Good context beats a long pitch." />
               </div>
             </div>
             <div className="contact-mini-map" aria-label="Contact route choices">
-              <span>Research</span>
-              <span>Doraemon</span>
-              <span>Projects</span>
+              <LocalizedText value="Research" />
+              <LocalizedText value="Doraemon" />
+              <LocalizedText value="Projects" />
             </div>
           </aside>
         </div>
@@ -153,8 +154,8 @@ export default function ContactPage() {
       <section className="contact-section contact-lanes-section">
         <div className="container">
           <div className="contact-section-head">
-            <p className="contact-kicker">Good reasons to reach out</p>
-            <h2>Pick the surface that best matches the conversation.</h2>
+            <LocalizedText as="p" className="contact-kicker" value="Good reasons to reach out" />
+            <LocalizedText as="h2" value="Pick the surface that best matches the conversation." />
           </div>
           <div className="contact-lane-grid">
             {contactLanes.map((lane) => {
@@ -163,12 +164,12 @@ export default function ContactPage() {
                 <article key={lane.title} className="contact-lane-card">
                   <div className="contact-lane-topline">
                     <Icon size={22} aria-hidden />
-                    <span>{lane.badge}</span>
+                    <LocalizedText value={lane.badge} />
                   </div>
-                  <h3>{lane.title}</h3>
-                  <p>{lane.summary}</p>
+                  <LocalizedText as="h3" value={lane.title} />
+                  <LocalizedText as="p" value={lane.summary} />
                   <Link href={lane.href} className="link-focus contact-lane-link">
-                    {lane.label}
+                    <LocalizedText value={lane.label} />
                     <ArrowRight size={15} aria-hidden />
                   </Link>
                 </article>
@@ -181,14 +182,14 @@ export default function ContactPage() {
       <section className="contact-section contact-note-section">
         <div className="container contact-note-grid">
           <div className="contact-note-copy">
-            <p className="contact-kicker">A useful first message</p>
-            <h2>Give the work a shape before asking for time.</h2>
-            <p>
-              The fastest way to start is a short note that makes the question, artifact, and desired next step clear.
-              It does not need to be polished. It does need to be safe to read in a public-contact context.
-            </p>
+            <LocalizedText as="p" className="contact-kicker" value="A useful first message" />
+            <LocalizedText as="h2" value="Give the work a shape before asking for time." />
+            <LocalizedText
+              as="p"
+              value="The fastest way to start is a short note that makes the question, artifact, and desired next step clear. It does not need to be polished. It does need to be safe to read in a public-contact context."
+            />
             <a href="mailto:hello@weiyudang.com" className="link-focus contact-outline-action">
-              Write the note
+              <LocalizedText value="Write the note" />
               <ArrowRight size={16} aria-hidden />
             </a>
           </div>
@@ -197,7 +198,7 @@ export default function ContactPage() {
               <div key={item} className="contact-checklist-item">
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <CheckCircle2 size={18} aria-hidden />
-                <p>{item}</p>
+                <LocalizedText as="p" value={item} />
               </div>
             ))}
           </div>
@@ -207,18 +208,18 @@ export default function ContactPage() {
       <section className="contact-section contact-boundary-section">
         <div className="container contact-boundary-grid">
           <div>
-            <p className="contact-kicker">Boundary</p>
-            <h2>Public contact is not a command channel.</h2>
-            <p>
-              Doraemon Office and the owner cockpit have clear roles. Contact is for starting a conversation, not for
-              sending instructions into the private operating layer.
-            </p>
+            <LocalizedText as="p" className="contact-kicker" value="Boundary" />
+            <LocalizedText as="h2" value="Public contact is not a command channel." />
+            <LocalizedText
+              as="p"
+              value="Doraemon Office and the owner cockpit have clear roles. Contact is for starting a conversation, not for sending instructions into the private operating layer."
+            />
           </div>
           <div className="contact-boundary-panel">
             {boundaryRules.map((rule) => (
               <div key={rule} className="contact-boundary-rule">
                 <ShieldCheck size={18} aria-hidden />
-                <span>{rule}</span>
+                <LocalizedText value={rule} />
               </div>
             ))}
           </div>
@@ -228,14 +229,14 @@ export default function ContactPage() {
       <section className="contact-section contact-response-section">
         <div className="container contact-response-frame">
           <div>
-            <p className="contact-kicker">What usually works</p>
-            <h2>Small, specific, public-safe starts compound best.</h2>
+            <LocalizedText as="p" className="contact-kicker" value="What usually works" />
+            <LocalizedText as="h2" value="Small, specific, public-safe starts compound best." />
           </div>
           <div className="contact-response-grid">
             {responseModes.map(([title, summary]) => (
               <div key={title} className="contact-response-card">
-                <strong>{title}</strong>
-                <span>{summary}</span>
+                <LocalizedText as="strong" value={title} />
+                <LocalizedText value={summary} />
               </div>
             ))}
           </div>

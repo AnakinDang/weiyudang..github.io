@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Camera } from "lucide-react";
+import { LocalizedText } from "@/components/LocalizedText";
 import type { JournalEntry } from "@/lib/content";
 
 const objectPosition = {
@@ -42,7 +43,7 @@ export function JournalCard({ entry, featured = false }: { entry: JournalEntry; 
           href={`/journal/${entry.slug}`}
           className="link-focus mt-6 inline-flex w-fit items-center gap-2 rounded-[8px] border border-[#dde7f0] bg-white px-3 py-2 text-sm font-bold text-slate-800 transition hover:border-[#bfdbfe] hover:bg-[#f1f7fb]"
         >
-          Read entry
+          <LocalizedText value="Read entry" />
           <ArrowUpRight size={15} aria-hidden />
         </Link>
       </div>

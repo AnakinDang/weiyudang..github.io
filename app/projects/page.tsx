@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Bot, Boxes, FileSearch, Globe2, LockKeyhole, Network, ShieldCheck } from "lucide-react";
+import { LocalizedText } from "@/components/LocalizedText";
 import { ProjectArchive } from "@/components/ProjectArchive";
 import { SiteChrome } from "@/components/SiteChrome";
 import { getProjects } from "@/lib/content";
@@ -66,38 +67,38 @@ export default function ProjectsPage() {
       <section className="projects-page-hero">
         <div className="container projects-page-hero-grid">
           <div className="projects-hero-copy">
-            <p className="projects-kicker">Personal OS systems map</p>
-            <h1>Projects that connect into one operating system.</h1>
-            <p>
-              A curated map of the public systems, private summaries, research lanes, and Doraemon Office surfaces that
-              make the Personal OS legible without exposing the operating layer underneath.
-            </p>
+            <LocalizedText as="p" className="projects-kicker" value="Personal OS systems map" />
+            <LocalizedText as="h1" value="Projects that connect into one operating system." />
+            <LocalizedText
+              as="p"
+              value="A curated map of the public systems, private summaries, research lanes, and Doraemon Office surfaces that make the Personal OS legible without exposing the operating layer underneath."
+            />
             <div className="projects-hero-actions">
               <Link href="#project-archive" className="link-focus projects-hero-primary">
-                Explore the system map
+                <LocalizedText value="Explore the system map" />
                 <ArrowRight size={16} aria-hidden />
               </Link>
               <Link href="/dora" className="link-focus projects-hero-link">
-                Open Doraemon Office
+                <LocalizedText value="Open Doraemon Office" />
                 <ArrowRight size={16} aria-hidden />
               </Link>
             </div>
             <div className="projects-hero-metrics" role="list" aria-label="Projects system summary">
               <span role="listitem">
                 <strong>{projects.length}</strong>
-                <small>curated projects</small>
+                <LocalizedText as="small" value="curated projects" />
               </span>
               <span role="listitem">
                 <strong>{publicCount}</strong>
-                <small>public artifacts</small>
+                <LocalizedText as="small" value="public artifacts" />
               </span>
               <span role="listitem">
                 <strong>{privateSummaryCount}</strong>
-                <small>private summaries</small>
+                <LocalizedText as="small" value="private summaries" />
               </span>
               <span role="listitem">
                 <strong>{researchOnlyCount}</strong>
-                <small>research-only projects</small>
+                <LocalizedText as="small" value="research-only projects" />
               </span>
             </div>
           </div>
@@ -117,16 +118,16 @@ export default function ProjectsPage() {
               <div className="projects-hero-image-card">
                 <Globe2 size={18} aria-hidden />
                 <span>
-                  <strong>Public map. Private engine.</strong>
-                  <small>No prompts, accounts, raw IDs, orders, or owner controls.</small>
+                  <LocalizedText as="strong" value="Public map. Private engine." />
+                  <LocalizedText as="small" value="No prompts, accounts, raw IDs, orders, or owner controls." />
                 </span>
               </div>
             </div>
             <div className="projects-hero-boundary-strip" role="list" aria-label="Public private project boundary">
               {boundaryStrip.map(([title, summary]) => (
                 <span key={title} role="listitem">
-                  <strong>{title}</strong>
-                  <small>{summary}</small>
+                  <LocalizedText as="strong" value={title} />
+                  <LocalizedText as="small" value={summary} />
                 </span>
               ))}
             </div>
@@ -137,12 +138,12 @@ export default function ProjectsPage() {
       <section className="projects-system-map-section">
         <div className="container">
           <div className="projects-system-map-head">
-            <p className="projects-kicker">System lanes</p>
-            <h2>Follow the work by operating layer.</h2>
-            <p>
-              The archive is not a portfolio shelf. It is the public map of how the site, Doraemon Office, research
-              studio, owner cockpit, and specialist MiniDoras fit together.
-            </p>
+            <LocalizedText as="p" className="projects-kicker" value="System lanes" />
+            <LocalizedText as="h2" value="Follow the work by operating layer." />
+            <LocalizedText
+              as="p"
+              value="The archive is not a portfolio shelf. It is the public map of how the site, Doraemon Office, research studio, owner cockpit, and specialist MiniDoras fit together."
+            />
           </div>
           <div className="projects-system-lane-grid" role="list" aria-label="Personal OS project lanes">
             {systemLanes.map((lane) => {
@@ -152,10 +153,10 @@ export default function ProjectsPage() {
                   <span className="projects-system-lane-icon">
                     <Icon size={22} aria-hidden />
                   </span>
-                  <strong>{lane.title}</strong>
-                  <span className="projects-system-lane-summary">{lane.summary}</span>
+                  <LocalizedText as="strong" value={lane.title} />
+                  <LocalizedText as="span" className="projects-system-lane-summary" value={lane.summary} />
                   <span className="projects-system-lane-link">
-                    Inspect layer
+                    <LocalizedText value="Inspect layer" />
                     <ArrowRight size={15} aria-hidden />
                   </span>
                 </Link>
@@ -164,10 +165,7 @@ export default function ProjectsPage() {
           </div>
           <div className="projects-map-boundary-note" role="note">
             <LockKeyhole size={17} aria-hidden />
-            <span>
-              Public project pages explain architecture, evidence, direction, and boundary. Private prompts, raw
-              runtime state, account data, trading execution, and owner-only controls stay outside the public bundle.
-            </span>
+            <LocalizedText value="Public project pages explain architecture, evidence, direction, and boundary. Private prompts, raw runtime state, account data, trading execution, and owner-only controls stay outside the public bundle." />
             <Network size={17} aria-hidden />
           </div>
         </div>
