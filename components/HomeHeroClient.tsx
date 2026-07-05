@@ -2,7 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Bot, Clock3, FlaskConical, LineChart, LockKeyhole, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Bot,
+  Clock3,
+  Eye,
+  FlaskConical,
+  LineChart,
+  LockKeyhole,
+  ShieldCheck,
+  Sparkles
+} from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { localizeSiteText } from "@/lib/site-i18n";
 import type { PublicDoraEventClientView } from "@/lib/dora-public-client";
@@ -72,6 +82,24 @@ const heroProofs = [
   }
 ] as const;
 
+const heroPathway = [
+  {
+    label: "Public homepage",
+    detail: "Understand the work",
+    icon: Eye
+  },
+  {
+    label: "Doraemon Office entry",
+    detail: "See public-safe agent rhythm",
+    icon: Bot
+  },
+  {
+    label: "Owner cockpit gate",
+    detail: "Keep decisions private",
+    icon: LockKeyhole
+  }
+] as const;
+
 export function HomeHeroClient({ recentEvents }: { recentEvents: HomeHeroEvent[] }) {
   const { locale } = useLanguage();
   const t = (value: string) => localizeSiteText(value, locale);
@@ -83,8 +111,7 @@ export function HomeHeroClient({ recentEvents }: { recentEvents: HomeHeroEvent[]
           src="/visuals/personal-os-portal-v2.png"
           alt=""
           fill
-          loading="eager"
-          fetchPriority="high"
+          priority
           quality={95}
           sizes="(max-width: 900px) 100vw, 68vw"
         />
@@ -113,6 +140,19 @@ export function HomeHeroClient({ recentEvents }: { recentEvents: HomeHeroEvent[]
               "A public home for physics, AI systems, research tools, and the agent team behind the work. Doraemon Office makes the Personal OS visible without exposing private tasks, prompts, or controls."
             )}
           </p>
+
+          <ul className="premium-hero-pathway" aria-label={t("Homepage Personal OS entry path")}>
+            {heroPathway.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.label}>
+                  <Icon size={15} aria-hidden />
+                  <span className="premium-hero-pathway-label">{t(item.label)}</span>
+                  <span className="premium-hero-pathway-detail">{t(item.detail)}</span>
+                </li>
+              );
+            })}
+          </ul>
 
           <div className="premium-hero-proofbar" aria-label={t("Homepage Personal OS proof points")}>
             {heroProofs.map((proof) => (
@@ -144,11 +184,11 @@ export function HomeHeroClient({ recentEvents }: { recentEvents: HomeHeroEvent[]
           <div className="premium-hero-actions">
             <Link href="/dora" className="link-focus premium-primary-link">
               <Bot size={18} aria-hidden />
-              {t("Enter Doraemon")}
+              {t("Enter Doraemon Office")}
               <ArrowRight size={16} aria-hidden />
             </Link>
             <Link href="#os-layers" className="link-focus premium-text-link">
-              {t("Explore the system")}
+              {t("Open Personal OS map")}
               <ArrowRight size={16} aria-hidden />
             </Link>
             <Link href="/projects" className="link-focus premium-text-link">
