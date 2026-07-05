@@ -349,7 +349,13 @@ const exactZhTranslations = {
   "The public site explains the work. Doraemon Office makes agent activity visible. The owner cockpit stays private. Research stays public-safe, evidence-first, and execution-free.":
     "公开站解释工作本身。Doraemon Office 让智能体活动可见。私密驾驶舱保持关闭。研究界面坚持公开安全、证据优先、无执行。",
   "Weiyu Personal OS connected surfaces": "Weiyu Personal OS 的连接界面",
+  "Personal OS route map": "Personal OS 路由地图",
   "Personal OS center": "Personal OS 中心",
+  "Doraemon signal": "Doraemon 信号",
+  "Watch public-safe state": "查看公开安全状态",
+  "Keep approvals private": "保持审批私密",
+  "Research evidence": "研究证据",
+  "Read without execution": "只读研究，不做执行",
   "Public studio": "公开工作室",
   "Projects, research notes, journal entries, and contact paths that explain the work.":
     "用项目、研究笔记、日志和联系入口解释这些工作。",
@@ -372,6 +378,16 @@ const exactZhTranslations = {
   "Research-only": "仅研究",
   "Public notes": "公开笔记",
   "Open research": "打开研究",
+  "Personal OS public and private data contract": "Personal OS 公开与私密数据契约",
+  "Projects, notes, Doraemon presence, public-safe status, and curated research context.":
+    "项目、笔记、Doraemon 在线状态、公开安全状态和经过整理的研究上下文。",
+  "Readable by default": "默认可读",
+  "Approvals, account context, private tasks, source notes, prompts, and operational controls.":
+    "审批、账户上下文、私密任务、源笔记、prompt 和操作控制。",
+  "Authenticated only": "仅认证可见",
+  "Trading and systems research can show methodology and evidence, never orders or execution.":
+    "交易与系统研究可以展示方法和证据，但绝不展示订单或执行。",
+  "No execution surface": "没有执行界面",
   "Weiyu stays in control": "Weiyu 保持控制",
   "Final authority.": "最终判断权。",
   "Agents are teammates": "智能体是队友",

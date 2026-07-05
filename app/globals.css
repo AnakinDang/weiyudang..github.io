@@ -49085,3 +49085,185 @@ textarea {
     padding-block: 0.38rem;
   }
 }
+
+/* Step 75: Homepage Personal OS map depth */
+.home-os-route-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.56rem;
+  margin: 0 0 clamp(0.9rem, 1.8vw, 1.35rem);
+}
+
+.home-os-route-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 4.05rem;
+  border: 1px solid rgba(191, 219, 254, 0.64);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 251, 255, 0.68)),
+    rgba(255, 255, 255, 0.76);
+  padding: 0.62rem 0.72rem;
+  color: #155eef;
+  box-shadow:
+    0 14px 40px rgba(37, 99, 235, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.home-os-route-step + .home-os-route-step::before {
+  position: absolute;
+  top: 50%;
+  left: -0.57rem;
+  width: 0.57rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.14), rgba(37, 99, 235, 0.42));
+  content: "";
+}
+
+.home-os-route-step:hover,
+.home-os-route-step:focus-visible {
+  border-color: rgba(37, 99, 235, 0.34);
+  box-shadow:
+    0 20px 56px rgba(37, 99, 235, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  transform: translateY(-1px);
+}
+
+.home-os-route-index {
+  color: #94a3b8;
+  font-size: 0.68rem;
+  font-weight: 820;
+  line-height: 1;
+}
+
+.home-os-route-step > span:last-of-type {
+  display: grid;
+  min-width: 0;
+  gap: 0.12rem;
+}
+
+.home-os-route-step strong {
+  overflow: hidden;
+  color: #0f172a;
+  font-size: 0.84rem;
+  font-weight: 830;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-os-route-step small {
+  overflow: hidden;
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.18;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-os-boundary-ledger {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.72rem;
+  margin-top: 0.88rem;
+}
+
+.home-os-boundary-ledger article {
+  min-height: 8.25rem;
+  border: 1px solid rgba(221, 231, 240, 0.82);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 251, 255, 0.62)),
+    rgba(255, 255, 255, 0.72);
+  padding: 0.94rem 1rem;
+  box-shadow:
+    0 16px 46px rgba(15, 23, 42, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.home-os-boundary-ledger article span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.48rem;
+  border: 1px solid rgba(191, 219, 254, 0.72);
+  border-radius: 999px;
+  background: rgba(239, 246, 255, 0.72);
+  padding: 0 0.52rem;
+  color: #155eef;
+  font-size: 0.66rem;
+  font-weight: 820;
+  line-height: 1;
+}
+
+.home-os-boundary-ledger article strong {
+  display: block;
+  margin-top: 0.72rem;
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 840;
+  line-height: 1.14;
+}
+
+.home-os-boundary-ledger article p {
+  margin: 0.52rem 0 0;
+  color: #475569;
+  font-size: 0.84rem;
+  font-weight: 560;
+  line-height: 1.52;
+}
+
+@media (max-width: 1180px) {
+  .home-os-route-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-os-route-step + .home-os-route-step::before {
+    display: none;
+  }
+
+  .home-os-boundary-ledger {
+    grid-template-columns: 1fr;
+  }
+
+  .home-os-boundary-ledger article {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .home-os-route-strip {
+    grid-template-columns: 1fr;
+    margin-inline: -0.18rem;
+  }
+
+  html[data-locale="zh"] .home-os-heading .section-title {
+    max-width: 8.8ch;
+    font-size: clamp(2.35rem, 10vw, 3.05rem);
+    line-height: 1.02;
+  }
+
+  .home-os-route-step {
+    min-height: 3.66rem;
+  }
+
+  .home-os-route-step strong,
+  .home-os-route-step small {
+    white-space: normal;
+  }
+
+  .home-os-boundary-ledger {
+    margin-inline: -0.18rem;
+  }
+
+  .home-os-boundary-ledger article {
+    padding: 0.86rem 0.92rem;
+  }
+}
