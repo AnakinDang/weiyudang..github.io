@@ -12,7 +12,7 @@ import {
   Sparkles,
   UserRound
 } from "lucide-react";
-import { AiLabPanel } from "@/components/AiLabPanel";
+import { AiLabPanel, type HomeDoraAgentPreview } from "@/components/AiLabPanel";
 import { HeroSection } from "@/components/HeroSection";
 import { JournalCard } from "@/components/JournalCard";
 import { LiveNotesFeed } from "@/components/LiveNotesFeed";
@@ -20,6 +20,8 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SelectedWorkShowcase } from "@/components/SelectedWorkShowcase";
 import { SiteChrome } from "@/components/SiteChrome";
 import { getLatestJournalEntries, getLatestNotes, getProjects } from "@/lib/content";
+import { getRecentPublicDoraEvents, toPublicDoraEventClientView } from "@/lib/dora-office";
+import { getPublicAgents } from "@/lib/public-agents";
 
 const operatingLayers = [
   {
@@ -136,6 +138,15 @@ export default function HomePage() {
   const projects = getProjects();
   const notes = getLatestNotes(3);
   const journalEntries = getLatestJournalEntries(3);
+  const doraPreviewEvents = getRecentPublicDoraEvents(5).map(toPublicDoraEventClientView);
+  const doraPreviewAgents: HomeDoraAgentPreview[] = getPublicAgents()
+    .filter((agent) => agent.publicId !== "agent_dora")
+    .slice(0, 5)
+    .map((agent) => ({
+      stageName: agent.stageName,
+      stateLabel: agent.stateLabel,
+      href: `/dora/team/${agent.slug}`
+    }));
 
   return (
     <SiteChrome headerVariant="doraemon" headerActiveHref="/">
@@ -302,7 +313,7 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <AiLabPanel />
+          <AiLabPanel fallbackEvents={doraPreviewEvents} agents={doraPreviewAgents} />
         </div>
       </section>
 

@@ -477,6 +477,23 @@ const exactZhTranslations = {
   "Doraemon system layers": "Doraemon 系统层",
   "Doraemon Office public command-room preview": "Doraemon Office 公开指挥室预览",
   "Doraemon Office system pillars": "Doraemon Office 系统支柱",
+  "Office preview status": "Office 预览状态",
+  "Doraemon Office live preview": "Doraemon Office 实时预览",
+  "Homepage Doraemon Office live public preview": "首页 Doraemon Office 实时公开预览",
+  "Current public focus": "当前公开焦点",
+  "Visible activity uses fixed public labels before it reaches this page.":
+    "可见活动在到达此页面前已映射为固定公开标签。",
+  "Focus agent": "焦点智能体",
+  "Focus state": "焦点状态",
+  "Latest public-safe events": "最新公开安全事件",
+  "Public-safe events": "公开安全事件",
+  "Private work stays gated": "私密工作保持隔离",
+  "Read-only surface": "只读界面",
+  "No public controls": "无公开控制项",
+  "Public-safe roster": "公开安全花名册",
+  "Homepage Doraemon Office public boundary": "首页 Doraemon Office 公开边界",
+  "Signals are live when the relay has public events; otherwise this card shows the same sanitized demo snapshot as Doraemon Office.":
+    "当中继有公开事件时，这里会显示实时信号；否则这张卡片展示与 Doraemon Office 相同的脱敏演示快照。",
   "Curated public guide. No prompts, credentials, private memory, or execution controls.":
     "精选公开导览。不展示 prompt、凭据、私密记忆或执行控制。",
   "This site is a personal home base. Collaboration can start small: a research question, an interface idea, or a workflow that deserves a better tool.":

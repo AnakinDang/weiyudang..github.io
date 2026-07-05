@@ -2,99 +2,73 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { ArrowRight, Bot, LockKeyhole, MonitorPlay, Network, ShieldCheck, Sparkles, Workflow } from "lucide-react";
+import { useMemo } from "react";
+import { ArrowRight, Bot, Clock3, Eye, LockKeyhole, Radio, ShieldCheck, UsersRound } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
+import type { PublicDoraEventClientView } from "@/lib/dora-public-client";
+import { formatPublicEventTime } from "@/lib/dora-public-format";
 import { localizeSiteText } from "@/lib/site-i18n";
+import {
+  activityModeLabel,
+  displayEvents,
+  focusEvent,
+  freshnessLabel,
+  modeLabel,
+  useDoraLiveEvents,
+  visibleLiveEvents
+} from "@/lib/use-dora-live";
 
-const labModes = [
+export type HomeDoraAgentPreview = {
+  stageName: string;
+  stateLabel: string;
+  href: string;
+};
+
+type AiLabPanelProps = {
+  fallbackEvents: PublicDoraEventClientView[];
+  agents: HomeDoraAgentPreview[];
+};
+
+const boundaryRows = [
   {
-    id: "office",
-    label: "Office",
-    icon: MonitorPlay,
-    title: "Doraemon Office",
-    summary: "A public-safe command room for agent presence, activity, schedules, and system rhythm.",
-    intent: "Visitors can understand the operating system without seeing private tasks, prompts, or owner notes.",
-    link: "/dora/office",
-    linkLabel: "Open office",
-    events: ["Show sanitized activity", "Render agent presence", "Keep owner state private"]
+    label: "Public relay",
+    value: "Public-safe events"
   },
   {
-    id: "team",
-    label: "MiniDoras",
-    icon: Network,
-    title: "Agent team",
-    summary: "Specialized MiniDoras make research, engineering, product, ops, memory, media, and trading research legible.",
-    intent: "Agents appear as teammates with roles and audit trails, not anonymous automation.",
-    link: "/dora/team",
-    linkLabel: "Meet the team",
-    events: ["Coordinate handoffs", "Surface public roles", "Separate research from execution"]
+    label: "Public schema",
+    value: "Closed allowlist"
   },
   {
-    id: "weiyu-ai",
-    label: "Weiyu AI",
-    icon: Sparkles,
-    title: "Personal AI studio",
-    summary: "The umbrella for experiments in AI workflows, creative systems, and research tools.",
-    intent: "Keep the company idea as one studio inside a personal website until weiyudang.ai exists.",
-    link: "/projects/weiyu-ai",
-    linkLabel: "Weiyu AI",
-    events: ["Map project boundary", "Publish public note", "Keep private app separate"]
+    label: "Owner boundary",
+    value: "Private work stays gated"
+  },
+  {
+    label: "Read-only surface",
+    value: "No public controls"
   }
-];
+] as const;
 
-export function AiLabPanel() {
+export function AiLabPanel({ fallbackEvents, agents }: AiLabPanelProps) {
   const { locale } = useLanguage();
   const t = (value: string) => localizeSiteText(value, locale);
-  const [activeId, setActiveId] = useState(labModes[0].id);
-  const active = useMemo(() => labModes.find((mode) => mode.id === activeId) ?? labModes[0], [activeId]);
-  const activeIndex = labModes.findIndex((mode) => mode.id === active.id);
-  const Icon = active.icon;
-
-  function selectAdjacentMode(offset: number) {
-    const nextIndex = (activeIndex + offset + labModes.length) % labModes.length;
-    const nextId = labModes[nextIndex].id;
-    document.getElementById(`home-ai-tab-${nextId}`)?.focus();
-    setActiveId(nextId);
-  }
+  const live = useDoraLiveEvents();
+  const events = useMemo(() => displayEvents(live.events, fallbackEvents), [fallbackEvents, live.events]);
+  const visibleLiveActivity = useMemo(() => visibleLiveEvents(live.events), [live.events]);
+  const hasVisibleLiveActivity = visibleLiveActivity.length > 0;
+  const currentFocus = focusEvent(events);
+  const currentMode = modeLabel(live.connection, live.events);
+  const activityMode = activityModeLabel(live.connection, live.events, hasVisibleLiveActivity);
+  const isLiveActivity = live.connection === "live" && hasVisibleLiveActivity;
 
   return (
-    <div className="home-ai-panel">
-      <div className="home-ai-tabs" role="tablist" aria-label={t("Doraemon system layers")}>
-        {labModes.map((mode) => {
-          const ModeIcon = mode.icon;
-          const isActive = mode.id === activeId;
-          return (
-            <button
-              key={mode.id}
-              id={`home-ai-tab-${mode.id}`}
-              type="button"
-              onClick={() => setActiveId(mode.id)}
-              onKeyDown={(event) => {
-                if (event.key === "ArrowRight") {
-                  event.preventDefault();
-                  selectAdjacentMode(1);
-                }
-
-                if (event.key === "ArrowLeft") {
-                  event.preventDefault();
-                  selectAdjacentMode(-1);
-                }
-              }}
-              role="tab"
-              aria-selected={isActive}
-              aria-controls="home-ai-detail-panel"
-              tabIndex={isActive ? 0 : -1}
-              className={`home-ai-tab${isActive ? " is-active" : ""}`}
-            >
-              <ModeIcon size={15} aria-hidden />
-              {t(mode.label)}
-            </button>
-          );
-        })}
+    <div className="home-ai-panel home-dora-live-panel">
+      <div className="home-dora-live-statusbar" aria-label={t("Office preview status")}>
+        <span className={isLiveActivity ? "home-dora-live-dot is-live" : "home-dora-live-dot"} aria-hidden />
+        <strong>{t("Doraemon Office live preview")}</strong>
+        <small>{t(activityMode)}</small>
       </div>
 
-      <div className="home-ai-command-room" aria-label={t("Doraemon Office public command-room preview")}>
+      <div className="home-ai-command-room home-dora-live-stage" aria-label={t("Homepage Doraemon Office live public preview")}>
         <Image
           className="home-ai-command-room-art"
           src="/visuals/doraemon-office-command-room-v2.png"
@@ -105,79 +79,86 @@ export function AiLabPanel() {
           priority={false}
         />
 
-        <div className="home-ai-room-panel">
+        <div className="home-dora-live-focus-card">
           <span>
-            <Icon size={15} aria-hidden />
-            {t(active.label)}
+            <Radio size={15} aria-hidden />
+            {t("Current public focus")}
           </span>
-          <strong>{t(active.title)}</strong>
-          <p>{t(active.summary)}</p>
+          <strong>{t(currentFocus?.title ?? "Demo snapshot")}</strong>
+          <p>{t("Visible activity uses fixed public labels before it reaches this page.")}</p>
+          <dl>
+            <div>
+              <dt>{t("Focus agent")}</dt>
+              <dd>{t(currentFocus?.agent ?? "Doraemon")}</dd>
+            </div>
+            <div>
+              <dt>{t("Focus state")}</dt>
+              <dd>{t(currentFocus?.state ?? "Demo")}</dd>
+            </div>
+          </dl>
         </div>
 
-        <div className="home-ai-mini-agent-strip" role="list" aria-label={t("Doraemon Office system pillars")}>
-          <span role="listitem"><Bot size={16} aria-hidden />Doraemon</span>
-          <span role="listitem"><Network size={16} aria-hidden />MiniDoras</span>
-          <span role="listitem"><Sparkles size={16} aria-hidden />Weiyu AI</span>
+        <div className="home-dora-agent-orbit" role="list" aria-label={t("Team presence")}>
+          {agents.map((agent) => (
+            <span key={agent.href} role="listitem">
+              <Link href={agent.href} className="link-focus home-dora-agent-node">
+                <Bot size={15} aria-hidden />
+                <span>
+                  <strong>{t(agent.stageName)}</strong>
+                  <small>{t(agent.stateLabel)}</small>
+                </span>
+              </Link>
+            </span>
+          ))}
         </div>
       </div>
 
-      <div
-        id="home-ai-detail-panel"
-        className="home-ai-detail"
-        role="tabpanel"
-        aria-labelledby={`home-ai-tab-${active.id}`}
-      >
-        <div className="home-ai-detail-head">
+      <section className="home-dora-live-feed" aria-label={t("Latest public-safe events")}>
+        <div className="home-dora-live-feed-head">
           <span>
-            <Icon size={19} aria-hidden />
-            {t("active layer")}
+            <Clock3 size={15} aria-hidden />
+            {t("Latest public-safe events")}
           </span>
-          <strong>{t(active.title)}</strong>
-        </div>
-        <p>{t(active.summary)}</p>
-        <div className="home-ai-intent">
-          <ShieldCheck size={18} aria-hidden />
-          {t(active.intent)}
-        </div>
-
-        <div className="home-ai-events">
-          {active.events.map((event, index) => (
-            <div key={event}>
-              <span className="mono">{index + 1}</span>
-              <span>{t(event)}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="home-ai-boundary-strip">
-          <span>
-            <ShieldCheck size={15} aria-hidden />
-            {t("Public-safe")}
-          </span>
-          <span>
-            <Workflow size={15} aria-hidden />
-            {t("Read-only")}
-          </span>
-          <span>
-            <LockKeyhole size={15} aria-hidden />
-            {t("Owner-only")}
-          </span>
-          <span>
-            <Workflow size={14} aria-hidden />
-            {t("Research-only")}
-          </span>
-        </div>
-
-        <div className="home-ai-footer">
-          <span>{t("Curated public guide. No prompts, credentials, private memory, or execution controls.")}</span>
-          <Link
-            href={active.link}
-            className="link-focus home-text-action"
-          >
-            {t(active.linkLabel)}
-            <ArrowRight size={16} aria-hidden />
+          <Link href="/dora/activity" className="link-focus">
+            {t("View all")}
+            <ArrowRight size={14} aria-hidden />
           </Link>
         </div>
+        <ol>
+          {events.slice(0, 4).map((event) => (
+            <li key={event.event_id} className={`home-dora-live-event is-${event.severity}`}>
+              <time dateTime={event.created_at}>{formatPublicEventTime(event.created_at)}</time>
+              <strong>{t(event.agent)}</strong>
+              <span>{t(event.title)}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <div className="home-dora-live-boundary" aria-label={t("Homepage Doraemon Office public boundary")}>
+        {boundaryRows.map((row, index) => {
+          const Icon = index === 0 ? Eye : index === 1 ? ShieldCheck : index === 2 ? LockKeyhole : UsersRound;
+
+          return (
+            <div key={row.label}>
+              <Icon size={15} aria-hidden />
+              <span>{t(row.label)}</span>
+              <strong>{t(row.value)}</strong>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="home-dora-live-footer">
+        <p>{t("Signals are live when the relay has public events; otherwise this card shows the same sanitized demo snapshot as Doraemon Office.")}</p>
+        <div>
+          <span>{t("Relay mode")}: {t(currentMode)}</span>
+          <span>{t("Event freshness")}: {t(freshnessLabel(live.events))}</span>
+        </div>
+      </div>
+
+      <div className="sr-only" aria-live="polite">
+        {t("Doraemon Office public relay mode:")} {t(currentMode)}.
       </div>
     </div>
   );
