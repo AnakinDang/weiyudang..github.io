@@ -123,6 +123,12 @@ const heroAgentNodes = [
   { name: "Media MiniDora", tone: "media" }
 ] as const;
 
+const doorwayPrinciples = [
+  { label: "Public window", detail: "Sanitized live state", icon: Eye },
+  { label: "Private area", detail: "Owner-only work", icon: LockKeyhole },
+  { label: "Research-only", detail: "No execution path", icon: ShieldCheck }
+] as const;
+
 const publicItems = ["Sanitized activity", "High-level state", "Agent presence", "System health"];
 const privateItems = ["Owner tasks and notes", "Strategies and playbooks", "Knowledge and data", "Accounts and integrations"];
 
@@ -141,6 +147,18 @@ export default function DoraPage() {
               </h1>
               <p className="doraemon-doorway-lede">The public window into Weiyu&apos;s personal AI command room.</p>
               <p className="doraemon-doorway-axiom">Doraemon coordinates. MiniDoras work. Weiyu decides.</p>
+              <ul className="doraemon-doorway-principle" aria-label="Doraemon Office boundary principles">
+                {doorwayPrinciples.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <li key={item.label}>
+                      <Icon size={15} aria-hidden />
+                      <span className="doraemon-doorway-principle-label">{item.label}</span>
+                      <span className="doraemon-doorway-principle-detail">{item.detail}</span>
+                    </li>
+                  );
+                })}
+              </ul>
               <div className="doraemon-doorway-actions">
                 <Link href="/dora/office" className="link-focus doraemon-primary-action">
                   Enter Doraemon Office
@@ -166,7 +184,6 @@ export default function DoraPage() {
                   alt=""
                   width={1586}
                   height={992}
-                  priority
                   quality={95}
                   sizes="(max-width: 1040px) 100vw, 58vw"
                 />
