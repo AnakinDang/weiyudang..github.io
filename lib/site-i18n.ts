@@ -484,6 +484,9 @@ const exactZhTranslations = {
   "The public Doraemon entry for Weiyu Dang's personal AI operating system.":
     "Weiyu Dang 个人 AI 操作系统的公开 Doraemon 入口。",
   "The public window into Weiyu's personal AI command room.": "进入 Weiyu 个人 AI 指挥室的公开窗口。",
+  "Doraemon Office boundary principles": "Doraemon Office 边界原则",
+  "Sanitized live state": "脱敏实时状态",
+  "Owner-only work": "仅本人工作",
   "A personal AI command room built for thinking, creating, and long-term impact.":
     "一个为思考、创造和长期影响而建的个人 AI 指挥室。",
   "Private Area": "私密区域",
@@ -1264,6 +1267,11 @@ const exactZhTranslations = {
   "Planning": "规划中",
   "Attention": "注意",
   "Tool call": "工具调用",
+  "Agent online": "智能体在线",
+  "Tool done": "工具完成",
+  "Tool failed": "工具失败",
+  "Scene": "场景",
+  "Heartbeat": "心跳",
   "Handoff": "交接",
 
   "Tasks": "任务",

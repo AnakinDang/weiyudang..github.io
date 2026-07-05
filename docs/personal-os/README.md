@@ -32,6 +32,7 @@ public personal site
 9. [Auth and Session Spec](09_AUTH_AND_SESSION.md)
 10. [Content Model](10_CONTENT_MODEL.md)
 11. [Claude Frontend Handoff](11_CLAUDE_FRONTEND_HANDOFF.md)
+12. [Target State Gap Analysis](12_TARGET_STATE_GAP_ANALYSIS.md)
 
 ## Product Layers
 

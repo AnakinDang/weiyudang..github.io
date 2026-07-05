@@ -60,7 +60,30 @@ const requiredPublicDoraCopy = {
     "Relay is connected; the visible feed keeps the demo-safe snapshot until a public event arrives.",
     "System Heartbeat",
     "Recent public activity",
-    "Full-screen bridge"
+    "Full-screen bridge",
+    "Agent online",
+    "Tool done",
+    "Tool failed",
+    "Artifact",
+    "Scene",
+    "Heartbeat"
+  ],
+  entry: [
+    "Doraemon Office",
+    "The public window into Weiyu's personal AI command room.",
+    "Doraemon coordinates. MiniDoras work. Weiyu decides.",
+    "Public window",
+    "Sanitized live state",
+    "Private area",
+    "Owner-only work",
+    "Research-only",
+    "No execution path",
+    "Enter Doraemon Office",
+    "Meet the MiniDoras",
+    "Read the project",
+    "Doraemon Office boundary principles",
+    "Public Safety Boundary",
+    "Research-only. Not an order, recommendation, or execution system."
   ],
   knowledge: [
     "Doraemon Knowledge",
