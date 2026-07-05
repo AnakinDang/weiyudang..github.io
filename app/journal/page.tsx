@@ -11,6 +11,7 @@ import {
   ShieldCheck
 } from "lucide-react";
 import { JournalCard } from "@/components/JournalCard";
+import { LocalizedText } from "@/components/LocalizedText";
 import { SiteChrome } from "@/components/SiteChrome";
 import { getJournalEntries } from "@/lib/content";
 
@@ -67,29 +68,29 @@ export default function JournalPage() {
       <section className="journal-index-hero">
         <div className="container journal-index-hero-grid">
           <div className="journal-index-copy">
-            <h1>Journal as a second notebook.</h1>
-            <p>
-              Photography, places, routines, and field observations around the Personal OS.
-              Less operational than the lab, still part of the work.
-            </p>
+            <LocalizedText as="h1" value="Journal as a second notebook." />
+            <LocalizedText
+              as="p"
+              value="Photography, places, routines, and field observations around the Personal OS. Less operational than the lab, still part of the work."
+            />
             <div className="journal-index-actions">
               <Link href={featured ? `/journal/${featured.slug}` : "#journal-entries"} className="link-focus journal-index-primary">
-                Read the latest entry
+                <LocalizedText value="Read the latest entry" />
                 <ArrowRight size={16} aria-hidden />
               </Link>
               <Link href="/lab" className="link-focus journal-index-secondary">
-                Open research notes
+                <LocalizedText value="Open research notes" />
                 <ArrowRight size={16} aria-hidden />
               </Link>
             </div>
             <div className="journal-index-status" aria-label="Journal public boundary">
               <span>
                 <ShieldCheck size={15} aria-hidden />
-                Public and personal
+                <LocalizedText value="Public and personal" />
               </span>
               <span>
                 <LockKeyhole size={15} aria-hidden />
-                No owner operations
+                <LocalizedText value="No owner operations" />
               </span>
             </div>
           </div>
@@ -107,11 +108,11 @@ export default function JournalPage() {
                 className="journal-index-image"
               />
               <div className="journal-index-image-caption">
-                <span>Public journal</span>
+                <LocalizedText value="Public journal" />
                 <strong>
-                  <span>{entries.length}</span> public journal entries
+                  <span>{entries.length}</span> <LocalizedText value="public journal entries" />
                 </strong>
-                <small>Photography, life notes, places</small>
+                <LocalizedText as="small" value="Photography, life notes, places" />
               </div>
             </div>
           </div>
@@ -126,8 +127,8 @@ export default function JournalPage() {
               return (
                 <div key={pillar.title} className="journal-index-lane">
                   <Icon size={24} aria-hidden />
-                  <h2>{pillar.title}</h2>
-                  <p>{pillar.summary}</p>
+                  <LocalizedText as="h2" value={pillar.title} />
+                  <LocalizedText as="p" value={pillar.summary} />
                 </div>
               );
             })}
@@ -140,8 +141,8 @@ export default function JournalPage() {
                 <div key={item.title} className="journal-index-boundary-item">
                   <Icon size={20} aria-hidden />
                   <span>
-                    <strong>{item.title}</strong>
-                    <small>{item.summary}</small>
+                    <LocalizedText as="strong" value={item.title} />
+                    <LocalizedText as="small" value={item.summary} />
                   </span>
                 </div>
               );
@@ -154,11 +155,11 @@ export default function JournalPage() {
         <div className="container">
           <div className="journal-index-section-head">
             <div>
-              <h2>Latest public field notes.</h2>
-              <p>
-                A quiet shelf for the human layer around the technical work: images, observations,
-                and fragments before they become projects or research notes.
-              </p>
+              <LocalizedText as="h2" value="Latest public field notes." />
+              <LocalizedText
+                as="p"
+                value="A quiet shelf for the human layer around the technical work: images, observations, and fragments before they become projects or research notes."
+              />
             </div>
           </div>
 
