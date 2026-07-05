@@ -6,7 +6,6 @@ import {
   ArrowRight,
   Bot,
   CheckCircle2,
-  Eye,
   Globe2,
   Layers3,
   LockKeyhole,
@@ -16,7 +15,6 @@ import {
   Users
 } from "lucide-react";
 import { DoraemonMark } from "@/components/DoraemonMark";
-import { DoraOfficeCommandSpine } from "@/components/DoraOfficeCommandSpine";
 import { DoraOfficeRouteDock } from "@/components/DoraOfficeRouteDock";
 import { DoraTeamLiveProvider, DoraTeamRoster, DoraTeamSelectedAgentCard, DoraTeamSignals } from "@/components/DoraTeamSignals";
 import { SiteChrome } from "@/components/SiteChrome";
@@ -98,6 +96,25 @@ const heroSafetySignals = [
   }
 ] as const;
 
+const stageLanes = [
+  {
+    title: "Coordinate",
+    summary: "Align priorities and context"
+  },
+  {
+    title: "Research",
+    summary: "Generate insights and evidence"
+  },
+  {
+    title: "Build",
+    summary: "Create systems and content"
+  },
+  {
+    title: "Operate",
+    summary: "Keep things running smoothly"
+  }
+] as const;
+
 const commandRoutes = [
   {
     title: "Doraemon Office",
@@ -147,7 +164,6 @@ export default function DoraTeamPage() {
           <div className="dora-office-route-dock-wrap">
             <DoraOfficeRouteDock active="/dora/team" />
           </div>
-          <DoraOfficeCommandSpine active="/dora/team" />
           <section className="dora-team-landing-hero" aria-labelledby="dora-team-title">
             <div className="container dora-team-landing-hero-grid">
               <div className="dora-team-landing-copy">
@@ -203,17 +219,14 @@ export default function DoraTeamPage() {
                     />
                   </div>
 
-                  <div className="dora-team-stage-boundary">
-                    <strong>Doraemon Team</strong>
-                    <p>Public-safe profiles. Demo-safe posture. No private work exposed.</p>
-                    <div>
-                      <Eye size={17} aria-hidden />
-                      <span>Public window</span>
-                    </div>
-                    <div>
-                      <LockKeyhole size={17} aria-hidden />
-                      <span>Private area</span>
-                    </div>
+                  <div className="dora-team-stage-lanes" aria-label="MiniDora operating lanes">
+                    {stageLanes.map((lane) => (
+                      <div key={lane.title}>
+                        <Layers3 size={17} aria-hidden />
+                        <strong>{lane.title}</strong>
+                        <span>{lane.summary}</span>
+                      </div>
+                    ))}
                   </div>
 
                   <div className="dora-team-orbit-system">
@@ -241,43 +254,6 @@ export default function DoraTeamPage() {
 
               <aside className="dora-team-hero-side" aria-label="MiniDora public team context">
                 <DoraTeamSelectedAgentCard agent={selectedAgent} />
-
-                <section className="dora-team-hero-side-card dora-team-operating-lanes-card">
-                  <div className="dora-team-hero-side-head">
-                    <Layers3 size={20} aria-hidden />
-                    <h2>Operating lanes</h2>
-                  </div>
-                  <ol className="dora-team-hero-lane-list">
-                    {teamLanes.map((lane) => (
-                      <li key={lane.title}>
-                        <strong>{lane.title}</strong>
-                        <span>{lane.summary}</span>
-                      </li>
-                    ))}
-                  </ol>
-                </section>
-
-                <section className="dora-team-hero-side-card dora-team-public-boundary-card">
-                  <div className="dora-team-hero-side-head">
-                    <ShieldCheck size={20} aria-hidden />
-                    <h2>Public boundary</h2>
-                  </div>
-                  <ul className="dora-team-hero-boundary-list">
-                    {publicWindowItems.slice(0, 3).map((item) => (
-                      <li key={item}>
-                        <CheckCircle2 size={14} aria-hidden />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="dora-team-research-boundary">
-                    Research-only. Not an order, recommendation, or execution system.
-                  </p>
-                  <Link href="/dora/system" className="link-focus dora-office-text-link">
-                    Boundary details
-                    <ArrowRight size={15} aria-hidden />
-                  </Link>
-                </section>
               </aside>
             </div>
           </section>
