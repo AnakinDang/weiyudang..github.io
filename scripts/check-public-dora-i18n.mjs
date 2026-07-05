@@ -81,6 +81,7 @@ const requiredPublicDoraCopy = {
     "Enter Doraemon Office",
     "Meet the MiniDoras",
     "Read the project",
+    "Office routes",
     "Doraemon Office boundary principles",
     "Public Safety Boundary",
     "Research-only. Not an order, recommendation, or execution system."

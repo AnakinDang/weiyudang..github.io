@@ -526,6 +526,7 @@ const exactZhTranslations = {
     "Weiyu Dang 个人 AI 操作系统的公开 Doraemon 入口。",
   "The public window into Weiyu's personal AI command room.": "进入 Weiyu 个人 AI 指挥室的公开窗口。",
   "Doraemon Office boundary principles": "Doraemon Office 边界原则",
+  "Office routes": "Office 路线",
   "Sanitized live state": "脱敏实时状态",
   "Owner-only work": "仅本人工作",
   "A personal AI command room built for thinking, creating, and long-term impact.":
