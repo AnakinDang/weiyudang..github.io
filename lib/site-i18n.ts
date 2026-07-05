@@ -605,6 +605,8 @@ const exactZhTranslations = {
   "Open Doraemon Office": "打开 Doraemon Office",
 
   "View Activity": "查看活动",
+  "A public operating surface for Weiyu's personal AI command room.":
+    "Weiyu 个人 AI 指挥室的公开运行界面。",
   "Current Focus": "当前重点",
   "Live public relay event mapped through the native site allowlist.":
     "实时公开中继事件已经通过原生站点白名单映射。",

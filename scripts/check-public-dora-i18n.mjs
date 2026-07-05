@@ -56,6 +56,7 @@ const requiredPublicDoraCopy = {
     "Private area hidden"
   ],
   office: [
+    "A public operating surface for Weiyu's personal AI command room.",
     "Current Focus",
     "Relay is connected; the visible feed keeps the demo-safe snapshot until a public event arrives.",
     "System Heartbeat",
