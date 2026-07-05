@@ -50545,3 +50545,394 @@ textarea {
     display: none;
   }
 }
+
+/* Step 69: MiniDora Team command floor */
+.dora-team-landing .dora-office-route-dock-wrap {
+  width: min(100% - 2.45rem, 1390px);
+  margin-top: 0.72rem;
+}
+
+.dora-team-landing .dora-office-route-dock {
+  box-shadow:
+    0 14px 44px rgba(15, 23, 42, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98);
+}
+
+.dora-office-route-dock-wrap + .dora-team-landing-hero {
+  min-height: min(646px, calc(100svh - 8.3rem));
+  padding-top: clamp(1.12rem, 1.75vw, 1.55rem);
+}
+
+.dora-team-landing-hero {
+  background:
+    radial-gradient(circle at 56% 34%, rgba(147, 197, 253, 0.14), transparent 27rem),
+    linear-gradient(180deg, #ffffff 0%, #ffffff 76%, #f8fbff 100%);
+}
+
+.dora-team-landing-hero-grid {
+  grid-template-columns: minmax(18.5rem, 0.36fr) minmax(42rem, 1fr) minmax(15rem, 0.28fr);
+  gap: clamp(0.9rem, 1.35vw, 1.25rem);
+}
+
+.dora-team-landing-copy {
+  min-height: 0;
+  padding-top: clamp(1.2rem, 3.8vw, 3.65rem);
+}
+
+.dora-team-landing-copy h1 {
+  max-width: 8.6ch;
+  font-size: clamp(4.1rem, 5.55vw, 5.9rem);
+  line-height: 0.9;
+}
+
+.dora-team-landing-copy > p {
+  max-width: 22.5rem;
+  margin-top: 1.25rem;
+}
+
+.dora-team-landing-actions {
+  margin-top: 1.45rem;
+}
+
+.dora-team-command-stage {
+  min-height: clamp(28.8rem, 36vw, 34.7rem);
+  border-color: rgba(191, 219, 254, 0.66);
+  background:
+    radial-gradient(circle at 50% 84%, rgba(246, 201, 69, 0.14), transparent 12rem),
+    radial-gradient(circle at 52% 50%, rgba(147, 197, 253, 0.22), transparent 42%),
+    linear-gradient(180deg, rgba(250, 253, 255, 0.96), #ffffff 78%);
+}
+
+.dora-team-command-stage::after {
+  position: absolute;
+  right: 15%;
+  bottom: 5.75rem;
+  left: 15%;
+  height: 9.5rem;
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.52), transparent 66%),
+    repeating-radial-gradient(ellipse at center, transparent 0 2.7rem, rgba(96, 165, 250, 0.18) 2.75rem 2.82rem);
+  content: "";
+  pointer-events: none;
+}
+
+.dora-team-command-room {
+  inset: -3.1rem -4.1rem 3.15rem -4.25rem;
+}
+
+.dora-team-command-room img {
+  opacity: 0.68;
+}
+
+.dora-team-stage-lanes {
+  position: absolute;
+  z-index: 4;
+  top: 1rem;
+  right: 1rem;
+  left: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid rgba(221, 231, 240, 0.82);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 18px 46px rgba(15, 23, 42, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  -webkit-backdrop-filter: blur(18px) saturate(1.08);
+  backdrop-filter: blur(18px) saturate(1.08);
+}
+
+.dora-team-stage-lanes div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.1rem 0.45rem;
+  min-height: 4.25rem;
+  border-left: 1px solid rgba(221, 231, 240, 0.74);
+  padding: 0.72rem 0.78rem;
+  color: #2563eb;
+}
+
+.dora-team-stage-lanes div:first-child {
+  border-left: 0;
+}
+
+.dora-team-stage-lanes strong {
+  color: #0f172a;
+  font-size: 0.74rem;
+  font-weight: 860;
+  line-height: 1.12;
+}
+
+.dora-team-stage-lanes span {
+  grid-column: 2;
+  color: #64748b;
+  font-size: 0.64rem;
+  font-weight: 650;
+  line-height: 1.28;
+}
+
+.dora-team-orbit-system {
+  z-index: 5;
+  right: 4.75%;
+  bottom: 2.85rem;
+  left: 4.75%;
+  height: 16.5rem;
+}
+
+.dora-team-landing-core {
+  bottom: 5.35rem;
+}
+
+.dora-team-landing-core > svg {
+  width: 4.35rem;
+  height: 4.35rem;
+}
+
+.dora-team-landing-orbit-agent span {
+  width: 2.84rem;
+  height: 2.84rem;
+}
+
+.dora-team-landing-activity-strip {
+  margin-top: 0.74rem;
+}
+
+.dora-team-landing-activity-strip li {
+  min-height: 3.7rem;
+}
+
+.dora-team-hero-side {
+  align-content: start;
+  grid-template-rows: auto;
+  padding-top: clamp(2rem, 5vw, 4rem);
+}
+
+.dora-team-hero-side-card {
+  padding: 1.05rem;
+}
+
+.dora-team-selected-agent-card dl {
+  gap: 0.36rem;
+}
+
+.dora-team-selected-agent-card dl div {
+  padding-top: 0.38rem;
+}
+
+.dora-team-selected-agent-card .dora-team-profile-link {
+  margin-top: 0.16rem;
+}
+
+.dora-team-roster-section {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(147, 197, 253, 0.1), transparent 25rem),
+    linear-gradient(180deg, #f8fbff 0%, #ffffff 44%);
+}
+
+@media (max-width: 1366px) and (min-width: 1181px) {
+  .dora-team-landing-hero-grid {
+    grid-template-columns: minmax(17.75rem, 0.38fr) minmax(35.5rem, 0.9fr) minmax(14.2rem, 0.3fr);
+  }
+
+  .dora-team-stage-lanes span {
+    display: none;
+  }
+
+  .dora-team-stage-lanes div {
+    min-height: 3.28rem;
+  }
+}
+
+@media (max-width: 1180px) {
+  .dora-office-route-dock-wrap + .dora-team-landing-hero {
+    min-height: auto;
+  }
+
+  .dora-team-landing-hero-grid {
+    width: min(100% - 1.55rem, 1000px);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "copy"
+      "stage"
+      "side";
+  }
+
+  .dora-team-landing-copy {
+    grid-area: copy;
+    padding-top: 1.1rem;
+  }
+
+  .dora-team-landing-visual {
+    grid-area: stage;
+  }
+
+  .dora-team-hero-side {
+    grid-area: side;
+  }
+
+  .dora-team-command-stage {
+    min-height: clamp(26.6rem, 56vw, 33rem);
+  }
+
+  .dora-team-hero-side {
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 841px) and (max-width: 1180px) {
+  .dora-team-landing-hero-grid {
+    grid-template-columns: minmax(16.75rem, 0.38fr) minmax(0, 0.62fr);
+    grid-template-areas:
+      "copy stage"
+      "side side";
+    gap: 0.85rem;
+  }
+
+  .dora-team-landing-copy {
+    align-content: center;
+    padding-top: 0;
+  }
+
+  .dora-team-landing-copy h1 {
+    font-size: clamp(3.25rem, 6vw, 4.45rem);
+  }
+
+  .dora-team-command-stage {
+    min-height: clamp(25.5rem, 46vw, 31rem);
+  }
+
+  .dora-team-stage-lanes div {
+    min-height: 3.25rem;
+  }
+
+  .dora-team-stage-lanes span {
+    display: none;
+  }
+
+  .dora-team-hero-side {
+    display: block;
+    max-width: 31rem;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 760px) {
+  .dora-team-landing .dora-office-route-dock-wrap {
+    width: min(100% - 1rem, 42rem);
+    margin-top: 0.52rem;
+  }
+
+  .dora-team-landing-copy h1 {
+    font-size: clamp(3.08rem, 14.2vw, 4rem);
+  }
+
+  .dora-team-command-stage {
+    min-height: 25.8rem;
+  }
+
+  .dora-team-stage-lanes {
+    top: 0.72rem;
+    right: 0.72rem;
+    left: 0.72rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dora-team-stage-lanes div {
+    min-height: 3.35rem;
+    border-top: 1px solid rgba(221, 231, 240, 0.74);
+  }
+
+  .dora-team-stage-lanes div:nth-child(-n + 2) {
+    border-top: 0;
+  }
+
+  .dora-team-stage-lanes div:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .dora-team-stage-lanes span {
+    display: none;
+  }
+
+  .dora-team-orbit-system {
+    bottom: 1.05rem;
+    height: 9.2rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .dora-team-landing-hero {
+    padding: 0.98rem 0.5rem 0.72rem;
+  }
+
+  .dora-team-landing-hero-grid {
+    width: 100%;
+  }
+
+  .dora-team-landing-copy {
+    padding-top: 0.72rem;
+  }
+
+  .dora-team-landing-copy > p {
+    margin-top: 0.88rem;
+  }
+
+  .dora-team-hero-signal-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: hidden;
+    margin-top: 0.82rem;
+  }
+
+  .dora-team-hero-signal-strip div {
+    min-width: 0;
+    min-height: 3.25rem;
+    padding: 0.58rem 0.54rem;
+  }
+
+  .dora-team-hero-signal-strip span {
+    display: none;
+  }
+
+  .dora-team-command-stage {
+    min-height: 23.9rem;
+  }
+
+  .dora-team-command-room {
+    inset: 0 -0.8rem 4.45rem -0.8rem;
+  }
+
+  .dora-team-stage-lanes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: hidden;
+    scrollbar-width: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .dora-team-stage-lanes::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dora-team-stage-lanes div {
+    min-width: 0;
+    min-height: 3.08rem;
+    border-top: 0;
+    border-left: 1px solid rgba(221, 231, 240, 0.74);
+  }
+
+  .dora-team-stage-lanes div:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .dora-team-stage-lanes div:nth-child(n + 3) {
+    border-top: 1px solid rgba(221, 231, 240, 0.74);
+  }
+
+  .dora-team-landing-core {
+    bottom: 2.3rem;
+  }
+}
