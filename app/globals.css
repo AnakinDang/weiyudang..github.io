@@ -39366,6 +39366,7 @@ textarea {
 /* Homepage Doraemon Office command-room entry */
 #doraemon-system.home-ai-section {
   padding-block: clamp(4.5rem, 7.4vw, 8rem);
+  scroll-margin-top: 8.5rem;
   background:
     linear-gradient(180deg, #ffffff 0%, #f8fbff 52%, #ffffff 100%),
     #ffffff;
@@ -49265,5 +49266,476 @@ textarea {
 
   .home-os-boundary-ledger article {
     padding: 0.86rem 0.92rem;
+  }
+}
+
+/* Step 76: Homepage Doraemon Office live preview */
+.home-dora-live-panel {
+  display: grid;
+  gap: 0.86rem;
+}
+
+.home-dora-live-statusbar {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 -0.34rem 1rem;
+  border: 1px solid rgba(191, 219, 254, 0.64);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  padding: 0.55rem 0.82rem;
+  color: #0f172a;
+  box-shadow:
+    0 14px 42px rgba(37, 99, 235, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(18px) saturate(1.08);
+  -webkit-backdrop-filter: blur(18px) saturate(1.08);
+}
+
+.home-dora-live-statusbar strong {
+  font-size: 0.8rem;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.home-dora-live-statusbar small {
+  color: #2563eb;
+  font-size: 0.73rem;
+  font-weight: 780;
+}
+
+.home-dora-live-dot {
+  width: 0.52rem;
+  height: 0.52rem;
+  border-radius: 999px;
+  background: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.14);
+}
+
+.home-dora-live-dot.is-live {
+  background: #16a34a;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.14);
+  animation: home-dora-live-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes home-dora-live-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.22);
+    opacity: 0.72;
+  }
+}
+
+.home-dora-live-stage {
+  min-height: clamp(31rem, 44vw, 38.5rem);
+}
+
+.home-dora-live-focus-card {
+  position: absolute;
+  top: clamp(1.2rem, 3vw, 2.6rem);
+  right: clamp(1rem, 2.8vw, 1.9rem);
+  z-index: 5;
+  display: grid;
+  gap: 0.62rem;
+  width: min(18.4rem, 38%);
+  border: 1px solid rgba(191, 219, 254, 0.66);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 251, 255, 0.68)),
+    rgba(255, 255, 255, 0.82);
+  padding: 1rem;
+  box-shadow:
+    0 24px 68px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px) saturate(1.06);
+  -webkit-backdrop-filter: blur(18px) saturate(1.06);
+}
+
+.home-dora-live-focus-card > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  color: #1d4ed8;
+  font-size: 0.72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.home-dora-live-focus-card strong {
+  color: #05070a;
+  font-size: 1.26rem;
+  font-weight: 830;
+  line-height: 1.08;
+}
+
+.home-dora-live-focus-card p {
+  margin: 0;
+  color: #334155;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.home-dora-live-focus-card dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.48rem;
+  margin: 0;
+}
+
+.home-dora-live-focus-card dl div {
+  border: 1px solid rgba(221, 231, 240, 0.78);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.62);
+  padding: 0.58rem;
+}
+
+.home-dora-live-focus-card dt {
+  color: #64748b;
+  font-size: 0.66rem;
+  font-weight: 760;
+}
+
+.home-dora-live-focus-card dd {
+  margin: 0.12rem 0 0;
+  color: #0f172a;
+  font-size: 0.76rem;
+  font-weight: 820;
+}
+
+.home-dora-agent-orbit {
+  position: absolute;
+  right: clamp(1rem, 4vw, 2.8rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  left: clamp(1rem, 7vw, 4.8rem);
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.42rem;
+}
+
+.home-dora-agent-node {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3.35rem;
+  border: 1px solid rgba(191, 219, 254, 0.54);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+  padding: 0.58rem 0.6rem;
+  color: #0f172a;
+  box-shadow:
+    0 16px 42px rgba(37, 99, 235, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px) saturate(1.06);
+  -webkit-backdrop-filter: blur(16px) saturate(1.06);
+}
+
+.home-dora-agent-node:hover {
+  border-color: rgba(37, 99, 235, 0.34);
+  transform: translateY(-1px);
+}
+
+.home-dora-agent-node svg {
+  color: #2563eb;
+}
+
+.home-dora-agent-node span {
+  display: grid;
+  min-width: 0;
+}
+
+.home-dora-agent-node strong,
+.home-dora-agent-node small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-dora-agent-node strong {
+  font-size: 0.74rem;
+  font-weight: 820;
+}
+
+.home-dora-agent-node small {
+  color: #64748b;
+  font-size: 0.66rem;
+  font-weight: 720;
+}
+
+.home-dora-live-feed {
+  position: relative;
+  z-index: 6;
+  overflow: hidden;
+  border: 1px solid rgba(191, 219, 254, 0.58);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 251, 255, 0.72)),
+    rgba(255, 255, 255, 0.88);
+  box-shadow:
+    0 20px 64px rgba(15, 23, 42, 0.052),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px) saturate(1.04);
+  -webkit-backdrop-filter: blur(18px) saturate(1.04);
+}
+
+.home-dora-live-feed-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border-bottom: 1px solid rgba(221, 231, 240, 0.78);
+  padding: 0.82rem 0.95rem;
+}
+
+.home-dora-live-feed-head span,
+.home-dora-live-feed-head a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  font-size: 0.78rem;
+  font-weight: 820;
+}
+
+.home-dora-live-feed-head span {
+  color: #0f172a;
+}
+
+.home-dora-live-feed-head a {
+  color: #2563eb;
+}
+
+.home-dora-live-feed ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-dora-live-event {
+  position: relative;
+  display: grid;
+  gap: 0.2rem;
+  min-height: 4.7rem;
+  padding: 0.86rem 0.92rem;
+}
+
+.home-dora-live-event + .home-dora-live-event {
+  border-left: 1px solid rgba(221, 231, 240, 0.78);
+}
+
+.home-dora-live-event::before {
+  position: absolute;
+  top: 0.88rem;
+  left: 0.56rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: #93c5fd;
+  content: "";
+}
+
+.home-dora-live-event.is-warning::before {
+  background: #f4b740;
+}
+
+.home-dora-live-event.is-info::before {
+  background: #2563eb;
+}
+
+.home-dora-live-event time {
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 760;
+}
+
+.home-dora-live-event strong {
+  overflow: hidden;
+  color: #0f172a;
+  font-size: 0.78rem;
+  font-weight: 830;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-dora-live-event span {
+  overflow: hidden;
+  color: #334155;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-dora-live-boundary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid rgba(221, 231, 240, 0.78);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.home-dora-live-boundary div {
+  display: grid;
+  gap: 0.28rem;
+  min-width: 0;
+  padding: 0.82rem 0.78rem;
+}
+
+.home-dora-live-boundary div + div {
+  border-left: 1px solid rgba(221, 231, 240, 0.78);
+}
+
+.home-dora-live-boundary svg {
+  color: #2563eb;
+}
+
+.home-dora-live-boundary span {
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 760;
+}
+
+.home-dora-live-boundary strong {
+  overflow-wrap: anywhere;
+  color: #0f172a;
+  font-size: 0.76rem;
+  font-weight: 820;
+  line-height: 1.25;
+}
+
+.home-dora-live-footer {
+  display: grid;
+  gap: 0.62rem;
+  color: #475569;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.home-dora-live-footer p {
+  margin: 0;
+}
+
+.home-dora-live-footer div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.44rem;
+}
+
+.home-dora-live-footer span {
+  border: 1px solid rgba(191, 219, 254, 0.58);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  padding: 0.34rem 0.58rem;
+  color: #1e3a8a;
+  font-size: 0.7rem;
+  font-weight: 780;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-dora-live-dot.is-live {
+    animation: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  .home-dora-live-focus-card {
+    width: min(20rem, 42%);
+  }
+}
+
+@media (max-width: 860px) {
+  .home-dora-agent-orbit {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .home-dora-agent-orbit span:nth-child(n + 4) {
+    display: none;
+  }
+
+  .home-dora-live-feed ol,
+  .home-dora-live-boundary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-dora-live-event:nth-child(odd),
+  .home-dora-live-boundary div:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .home-dora-live-event:nth-child(n + 3),
+  .home-dora-live-boundary div:nth-child(n + 3) {
+    border-top: 1px solid rgba(221, 231, 240, 0.78);
+  }
+}
+
+@media (max-width: 720px) {
+  .home-dora-live-statusbar {
+    width: auto;
+    margin: 0;
+    border-radius: 8px;
+  }
+
+  .home-dora-live-statusbar small {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .home-dora-live-stage {
+    min-height: 26.8rem;
+  }
+
+  .home-dora-live-focus-card {
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    top: auto;
+    width: auto;
+  }
+
+  .home-dora-agent-orbit {
+    right: 1rem;
+    bottom: 12.9rem;
+    left: 1rem;
+  }
+
+  .home-dora-agent-node {
+    min-height: 2.9rem;
+    padding: 0.48rem 0.5rem;
+  }
+
+  .home-dora-agent-node strong {
+    font-size: 0.7rem;
+  }
+
+  .home-dora-agent-node small {
+    font-size: 0.62rem;
+  }
+
+  .home-dora-live-feed ol,
+  .home-dora-live-boundary {
+    grid-template-columns: 1fr;
+  }
+
+  .home-dora-live-event + .home-dora-live-event,
+  .home-dora-live-boundary div + div {
+    border-top: 1px solid rgba(221, 231, 240, 0.78);
+    border-left: 0;
+  }
+
+  .home-dora-live-event:nth-child(n + 3),
+  .home-dora-live-boundary div:nth-child(n + 3) {
+    border-top: 1px solid rgba(221, 231, 240, 0.78);
   }
 }
