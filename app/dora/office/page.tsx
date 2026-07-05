@@ -54,7 +54,6 @@ export default function DoraOfficePage() {
         <div className="dora-office-route-dock-wrap">
           <DoraOfficeRouteDock active="/dora/office" />
         </div>
-        <DoraOfficeCommandSpine active="/dora/office" />
         <section className="dora-office-product-hero" aria-labelledby="dora-office-title">
           <div className="container dora-office-product-shell" id="live-dashboard">
             <div className="dora-office-product-copy">
@@ -62,10 +61,7 @@ export default function DoraOfficePage() {
                 <span>Doraemon</span>
                 <span>Office</span>
               </h1>
-              <p>
-                The native public office overview: sanitized activity, MiniDora presence, operating rhythm, and system
-                posture inside weiyudang.com.
-              </p>
+              <p>A public operating surface for Weiyu&apos;s personal AI command room.</p>
               <div className="dora-office-product-actions">
                 <Link href="/dora/activity" className="link-focus dora-office-product-primary">
                   View Activity
@@ -164,6 +160,9 @@ export default function DoraOfficePage() {
               The office now starts inside the site. Activity feed, team presence, cadence summary, schedules, and
               system posture stay public-safe and read-only.
             </p>
+          </div>
+          <div className="dora-office-product-route-map" aria-label="Doraemon Office route map">
+            <DoraOfficeCommandSpine active="/dora/office" />
           </div>
           <div className="container dora-office-product-detail-grid">
             <div className="dora-office-product-maincards">
