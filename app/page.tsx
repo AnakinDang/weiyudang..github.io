@@ -87,6 +87,51 @@ const operatingPrinciples = [
   }
 ];
 
+const operatingRoute = [
+  {
+    label: "Public story",
+    detail: "Understand the work",
+    href: "/projects",
+    icon: Globe2
+  },
+  {
+    label: "Doraemon signal",
+    detail: "Watch public-safe state",
+    href: "/dora/office",
+    icon: Bot
+  },
+  {
+    label: "Owner decision",
+    detail: "Keep approvals private",
+    href: "/app",
+    icon: LockKeyhole
+  },
+  {
+    label: "Research evidence",
+    detail: "Read without execution",
+    href: "/lab",
+    icon: LineChart
+  }
+];
+
+const operatingBoundaryLedger = [
+  {
+    title: "Public window",
+    summary: "Projects, notes, Doraemon presence, public-safe status, and curated research context.",
+    rule: "Readable by default"
+  },
+  {
+    title: "Private owner area",
+    summary: "Approvals, account context, private tasks, source notes, prompts, and operational controls.",
+    rule: "Authenticated only"
+  },
+  {
+    title: "Research-only boundary",
+    summary: "Trading and systems research can show methodology and evidence, never orders or execution.",
+    rule: "No execution surface"
+  }
+];
+
 export default function HomePage() {
   const projects = getProjects();
   const notes = getLatestNotes(3);
@@ -107,6 +152,29 @@ export default function HomePage() {
               private. Research stays public-safe, evidence-first, and execution-free.
             </p>
           </div>
+
+          <nav className="home-os-route-strip" aria-label="Personal OS route map">
+            {operatingRoute.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  prefetch={item.href.startsWith("/app") ? false : undefined}
+                  className="link-focus home-os-route-step"
+                >
+                  <span className="home-os-route-index">{String(index + 1).padStart(2, "0")}</span>
+                  <Icon size={17} aria-hidden />
+                  <span>
+                    <strong>{item.label}</strong>
+                    <small>{item.detail}</small>
+                  </span>
+                  <ArrowRight size={14} aria-hidden />
+                </Link>
+              );
+            })}
+          </nav>
 
           <div className="home-os-constellation" role="group" aria-label="Weiyu Personal OS connected surfaces">
             <div className="home-os-core" role="group" aria-label="Personal OS center">
@@ -149,6 +217,16 @@ export default function HomePage() {
                 </Link>
               );
             })}
+          </div>
+
+          <div className="home-os-boundary-ledger" aria-label="Personal OS public and private data contract">
+            {operatingBoundaryLedger.map((item) => (
+              <article key={item.title}>
+                <span>{item.rule}</span>
+                <strong>{item.title}</strong>
+                <p>{item.summary}</p>
+              </article>
+            ))}
           </div>
 
           <div className="home-os-principle-strip">
